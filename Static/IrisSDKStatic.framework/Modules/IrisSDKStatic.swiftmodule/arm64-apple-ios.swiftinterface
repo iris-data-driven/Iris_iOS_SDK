@@ -1,0 +1,115 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios13.2 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name IrisSDKStatic
+import Foundation
+@_exported import IrisSDKStatic
+import NotificationCenter
+import OneSignal
+import PlotProjects
+import SafariServices
+import Swift
+import SystemConfiguration
+import UIKit.UIButton
+import UIKit.UIColor
+import UIKit.UIDevice
+import UIKit
+import UIKit.UINavigationController
+import UIKit.UITableViewCell
+import UIKit.UIView
+import UIKit.UIViewController
+import UserNotifications
+final public class CentralLayout {
+  public static var `default`: IrisSDKStatic.CentralLayout
+  final public var navColor: UIKit.UIColor
+  final public var titleNavColor: UIKit.UIColor
+  final public var buttonNavColor: UIKit.UIColor
+  final public var backgroundListColor: UIKit.UIColor
+  final public var backgroundCellColor: UIKit.UIColor
+  final public var fontTitleCellColor: UIKit.UIColor
+  final public var fontSubtitleColor: UIKit.UIColor
+  final public var bodyCellColor: UIKit.UIColor
+  final public var unreadBodyCellColor: UIKit.UIColor
+  final public var unreadMarkerColor: UIKit.UIColor
+  final public var openLinkTitleColor: UIKit.UIColor
+  final public var openLinkButtonColor: UIKit.UIColor
+  @objc deinit
+}
+@objc public class CentralButton : UIKit.UIButton {
+  public var badge: Swift.String? {
+    get
+    set(newValue)
+  }
+  public var badgeBackgroundColor: UIKit.UIColor {
+    get
+    set(newValue)
+  }
+  public var badgeTextColor: UIKit.UIColor {
+    get
+    set(newValue)
+  }
+  public var badgeFont: UIKit.UIFont {
+    get
+    set(newValue)
+  }
+  public var badgeEdgeInsets: UIKit.UIEdgeInsets? {
+    get
+    set(newValue)
+  }
+  @objc deinit
+}
+public struct IrisUser : Swift.Codable {
+  public let cpf: Swift.String
+  public let phoneNumber: Swift.String
+  public let email: Swift.String
+  public let idIris: Swift.String
+  public let audienceToken: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@objc public class IrisTokenManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension IrisTokenManager {
+  public class func getUserIrisKey(_ user: IrisSDKStatic.IrisUser) -> Swift.String
+}
+@objc open class IrisNotify : ObjectiveC.NSObject {
+  weak public var delegate: IrisSDKStatic.PushDeepLinkingDelegate?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension IrisNotify {
+  open class func initWith(_ launchOptions: [Swift.AnyHashable : Any]?, handleNotificationAction actionCallback: @escaping OneSignal.OSHandleNotificationActionBlock, settings: [Swift.AnyHashable : Any]?) -> Any?
+  public typealias AuthCompletion = (Swift.Bool) -> Swift.Void
+  open class func promptForPushNotifications(withUserResponse completionHandler: @escaping IrisSDKStatic.IrisNotify.AuthCompletion)
+  open class func sendTag(_ key: Swift.String!, value: Swift.String!)
+  open class func didReceiveNotificationExtensionRequest(request: UserNotifications.UNNotificationRequest!, with content: UserNotifications.UNMutableNotificationContent!)
+  open class func serviceExtensionTimeWillExpireRequest(request: UserNotifications.UNNotificationRequest!, with content: UserNotifications.UNMutableNotificationContent!)
+  open func initWithCallbacks(_ launchOptions: [Swift.AnyHashable : Any]?)
+}
+open class CentralNotificationCoordinator {
+  public init(presenter: UIKit.UIViewController)
+  public func start()
+  @objc deinit
+}
+@objc open class IrisGeotrigger : ObjectiveC.NSObject, PlotProjects.PlotDelegate {
+  public init(_ launchOptions: [Swift.AnyHashable : Any]?)
+  open func start()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension IrisGeotrigger {
+  @objc final public func plotLoadConfig(_ originalConfig: PlotProjects.PlotConfiguration!, loadWithConfig: ((PlotProjects.PlotConfiguration?) -> Swift.Void)!)
+  @objc final public func plotHandleGeotriggers(_ geotriggerHandler: PlotProjects.PlotHandleGeotriggers!)
+}
+public protocol PushDeepLinkingDelegate : AnyObject {
+  func send(_ dict: [Swift.AnyHashable : Any])
+}
+extension UIBarButtonItem {
+  public func addBadgeCounter()
+  public func updateBadge()
+  public func removeBadge()
+}
+public class NetworkManager {
+  @objc deinit
+}

@@ -1,0 +1,11 @@
+framework module IrisSDKStatic {
+  umbrella header "IrisSDKStatic.h"
+
+  export *
+  module * { export * }
+}
+
+module IrisSDKStatic.Swift {
+    header "IrisSDKStatic-Swift.h"
+    requires objc
+}
